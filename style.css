@@ -5,11 +5,14 @@ body {
   color: #333;
   text-align: center;
   padding: 2rem;
+  overflow: hidden;
 }
 
 .container {
   max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 h1 {
@@ -68,6 +71,7 @@ h1 {
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* Floating hearts */
 .heart {
   position: fixed;
   width: 20px;
