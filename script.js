@@ -33,5 +33,5 @@ function updateCountdown() {
 }
 
 // Update countdown every 100 milliseconds for milliseconds display
-setInterval(updateCountdown, 100);
+setInterval(updateCountdown, 1000);
 updateCountdown();
