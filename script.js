@@ -1,5 +1,5 @@
 // Set the wedding date here (Update this when needed)
-const weddingDate = new Date('May 16, 2025 00:00:00').getTime();
+const weddingDate = new Date('May 15, 2025 00:00:00').getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
@@ -33,5 +33,5 @@ function updateCountdown() {
 }
 
 // Update countdown every 100 milliseconds for milliseconds display
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown, 100);
 updateCountdown();
