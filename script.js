@@ -31,5 +31,5 @@ function updateCountdown() {
 }
 
 // Update countdown every second
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown, 100);
 updateCountdown();
