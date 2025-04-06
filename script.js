@@ -15,6 +15,7 @@ function updateCountdown() {
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  const milliseconds = distance % 1000;
 
   const totalSeconds = Math.floor(distance / 1000);
   const totalMinutes = Math.floor(distance / (1000 * 60));
@@ -24,7 +25,8 @@ function updateCountdown() {
   document.getElementById('hours').textContent = hours;
   document.getElementById('minutes').textContent = minutes;
   document.getElementById('seconds').textContent = seconds;
-
+  document.getElementById('milliseconds').textContent = milliseconds;
+  
   document.getElementById('total-seconds').textContent = totalSeconds;
   document.getElementById('total-minutes').textContent = totalMinutes;
   document.getElementById('total-hours').textContent = totalHours;
