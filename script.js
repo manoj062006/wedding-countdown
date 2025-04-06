@@ -1,5 +1,5 @@
 // Set the wedding date here (Update this when needed)
-const weddingDate = new Date('May 15, 2025 00:00:00').getTime();
+const weddingDate = new Date('May 16, 2025 08:30:00').getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
@@ -15,6 +15,7 @@ function updateCountdown() {
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  const milliseconds = distance % 1000;
 
   const totalSeconds = Math.floor(distance / 1000);
   const totalMinutes = Math.floor(distance / (1000 * 60));
@@ -24,12 +25,13 @@ function updateCountdown() {
   document.getElementById('hours').textContent = hours;
   document.getElementById('minutes').textContent = minutes;
   document.getElementById('seconds').textContent = seconds;
+  document.getElementById('milliseconds').textContent = milliseconds;
 
   document.getElementById('total-seconds').textContent = totalSeconds;
   document.getElementById('total-minutes').textContent = totalMinutes;
   document.getElementById('total-hours').textContent = totalHours;
 }
 
-// Update countdown every second
-setInterval(updateCountdown, 1000);
+// Update countdown every 100 milliseconds for milliseconds display
+setInterval(updateCountdown, 100);
 updateCountdown();
