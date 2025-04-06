@@ -1,63 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Wedding Countdown</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Floating hearts -->
-  <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
-  <div class="heart" style="left: 25%; animation-delay: 2s;"></div>
-  <div class="heart" style="left: 50%; animation-delay: 4s;"></div>
-  <div class="heart" style="left: 75%; animation-delay: 6s;"></div>
-  <div class="heart" style="left: 90%; animation-delay: 8s;"></div>
+// Set the wedding date here (Update this when needed)
+const weddingDate = new Date('May 15, 2025 00:00:00').getTime();
 
-  <div class="container">
-    <h1>Countdown to Our Wedding</h1>
-    <div class="countdown">
-      <div class="time-box">
-        <span id="days">0</span>
-        <p>Days</p>
-      </div>
-      <div class="time-box">
-        <span id="hours">0</span>
-        <p>Hours</p>
-      </div>
-      <div class="time-box">
-        <span id="minutes">0</span>
-        <p>Minutes</p>
-      </div>
-      <div class="time-box">
-        <span id="seconds">0</span>
-        <p>Seconds</p>
-      </div>
-    </div>
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
 
-    <div class="countdown total-countdown">
-      <div class="time-box">
-        <span id="total-hours">0</span>
-        <p>Total Hours Left</p>
-      </div>
-      <div class="time-box">
-        <span id="total-minutes">0</span>
-        <p>Total Minutes Left</p>
-      </div>
-      <div class="time-box">
-        <span id="total-seconds">0</span>
-        <p>Total Seconds Left</p>
-      </div>
-    </div>
+  if (distance < 0) {
+    document.querySelector('.countdown').innerHTML = '<h2>We are married!</h2>';
+    document.querySelector('.total-countdown').innerHTML = '';
+    return;
+  }
 
-    <div class="gallery">
-      <h2>Our Memories</h2>
-      <img src="images/photo1.jpg" alt="Placeholder Photo 1" class="fade-in" />
-      <img src="images/photo2.jpg" alt="Placeholder Photo 2" class="fade-in" />
-      <img src="images/photo3.jpg" alt="Placeholder Photo 3" class="fade-in" />
-    </div>
-  </div>
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  <script src="script.js"></script>
-</body>
-</html>
+  const totalSeconds = Math.floor(distance / 1000);
+  const totalMinutes = Math.floor(distance / (1000 * 60));
+  const totalHours = Math.floor(distance / (1000 * 60 * 60));
+
+  document.getElementById('days').textContent = days;
+  document.getElementById('hours').textContent = hours;
+  document.getElementById('minutes').textContent = minutes;
+  document.getElementById('seconds').textContent = seconds;
+
+  document.getElementById('total-seconds').textContent = totalSeconds;
+  document.getElementById('total-minutes').textContent = totalMinutes;
+  document.getElementById('total-hours').textContent = totalHours;
+}
+
+// Update countdown every second
+setInterval(updateCountdown, 1000);
+updateCountdown();
